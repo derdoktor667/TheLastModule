@@ -1,4 +1,5 @@
-﻿
+﻿Set-StrictMode -Version Latest
+
 Function Start-AdminPowershell {
 
     <#
@@ -25,7 +26,7 @@ Function Start-AdminPowershell {
     #>
 
     [cmdletbinding()]
-
+    
     param(
         [parameter(ValueFromPipeLine=$True,ValueFromPipeLineByPropertyName=$True)][Alias("CN","__Server","IPAddress","Server")][string]$Computername = $env:Computername
         )

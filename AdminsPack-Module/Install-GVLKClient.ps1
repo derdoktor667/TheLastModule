@@ -30,19 +30,29 @@ Function Install-GVLKClient {
     [cmdletbinding()]
 
     param(
-        [parameter][string]$GVLKey = $(throw "Please provide a GVLKey, Exit."),
-        [parameter][string]$KMSHost = $(throw "Please provide a KMS Server, Exit.")
+        [parameter(mandatory=$true)]$GVLKey = " ",
+        [parameter(mandatory=$true)]$KMSHost = " ",
+        [parameter(mandatory=$true)]$WinEditionWanted = " ",
+        [parameter(mandatory=$false)]$Computername = $env:COMPUTERNAME
         )
 
     begin {
-        $WinEditionOnline = (Get-WindowsEdition -Online).Edition
-        $WinEditionWanted = "ServerStandard"
-        }
+        # do we have admin privileges???
+        $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
+        $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+        if (!($isAdmin)) {
+            Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
+            # ...dead
+            }
         
-    process {       
-        if(!($WinEditionOnline -eq $WinEditionWanted)) {
+        # ...currently OS edition
+        Invoke-Command -Scriptblock {$WinEditionOnline = $(Get-WindowsEdition -Online)}
+        }
+
+    process {
+        if(!($WinEditionOnline.Edition -eq $WinEditionWanted)) {
         Invoke-Command -ScriptBlock {dism /online /set-edition:$WinEditionWanted /productkey:$GVLKey /accepteula}
-        Invoke-Command -ScriptBlock {slmgr.vbs /skms $KMSHost}
+        Invoke-Command -ScriptBlock {slmgr.vbs /skms "$KMSHost"}
         Invoke-Command -ScriptBlock {slmgr.vbs /ato}
         Invoke-Command -ScriptBlock {slmgr.vbs /dli}
         }
