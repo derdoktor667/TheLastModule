@@ -47,15 +47,15 @@
             }
 
         # ...currently OS edition
-        Invoke-Command -Scriptblock {$WinEditionOnline = $(Get-WindowsEdition -Online)}
+        $WinEditionOnline = $(Get-WindowsEdition -Online)
         }
 
     process {
         if(!($WinEditionOnline.Edition -eq $WinEditionWanted)) {
-        Invoke-Command -ScriptBlock {dism /online /set-edition:$WinEditionWanted /productkey:$GVLKey /accepteula}
-        Invoke-Command -ScriptBlock {slmgr.vbs /skms "$KMSHost"}
-        Invoke-Command -ScriptBlock {slmgr.vbs /ato}
-        Invoke-Command -ScriptBlock {slmgr.vbs /dli}
+            dism /online /set-edition:$WinEditionWanted /productkey:$GVLKey /accepteula
+            slmgr.vbs /skms "$KMSHost"
+            slmgr.vbs /ato
+            slmgr.vbs /dli
         }
     }
 }
