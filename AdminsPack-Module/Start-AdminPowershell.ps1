@@ -1,6 +1,4 @@
-﻿Set-StrictMode -Version Latest
-
-Function Start-AdminPowershell {
+﻿Function Start-AdminPowershell {
 
     <#
     .SYNOPSIS
@@ -26,18 +24,19 @@ Function Start-AdminPowershell {
     #>
 
     [cmdletbinding()]
-    
+
     param(
         [parameter(ValueFromPipeLine=$True,ValueFromPipeLineByPropertyName=$True)][Alias("CN","__Server","IPAddress","Server")][string]$Computername = $env:Computername
         )
 
     begin {
+        Set-StrictMode -Version Latest
         $Domain = "$env:USERDOMAIN"
         $AdminCredentials = "$Domain\Administrator"
     }
 
     process {
-        $AdminSession = New-PSSession -ComputerName $Computername -Credential $AdminCredentials
+        $AdminSession = New-PSSession -ComputerName $Computername -Credential $AdminCredentials -Verbose
         Enter-PSSession $AdminSession
     }
 }

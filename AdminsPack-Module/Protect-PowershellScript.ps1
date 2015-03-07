@@ -30,6 +30,7 @@
         )
 
     begin {
+        Set-StrictMode -Version Latest
         $signcert = $(Get-ChildItem cert:\ -Recurse –Codesign)
         $timeStampURL = "http://timestamp.verisign.com/scripts/timstamp.dll"
 

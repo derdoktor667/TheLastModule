@@ -1,5 +1,4 @@
-﻿
-Function Install-GVLKClient {
+﻿Function Install-GVLKClient {
 
 <#
     .SYNOPSIS
@@ -37,6 +36,8 @@ Function Install-GVLKClient {
         )
 
     begin {
+        Set-StrictMode -Version Latest
+
         # do we have admin privileges???
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
         $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -44,7 +45,7 @@ Function Install-GVLKClient {
             Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
             # ...dead
             }
-        
+
         # ...currently OS edition
         Invoke-Command -Scriptblock {$WinEditionOnline = $(Get-WindowsEdition -Online)}
         }

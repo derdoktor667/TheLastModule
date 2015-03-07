@@ -21,9 +21,12 @@
     #>
 
     begin {
+        Set-StrictMode -Version Latest
+
         # do we have admin privileges???
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
         $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
         if (!($isAdmin)) {
             Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
             # ...dead
@@ -31,6 +34,6 @@
     }
 
      process {
-        iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+        Invoke-Expression ((New-Object -TypeName Net.Webclient).DownloadString('https://chocolatey.org/install.ps1'))
      }
 }

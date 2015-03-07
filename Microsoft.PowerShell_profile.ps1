@@ -2,7 +2,7 @@
 # $PSDefaultParameterValues['Format-[wt]*:Autosize'] = $true
 
 # ...pimp my Error
-$a = (Get-Host).PrivateData
+$a = $(Get-Host).PrivateData
 $a.ErrorBackgroundColor = "red"
 $a.ErrorForegroundColor = "white"
 $a.ProgressForegroundColor = "blue"
@@ -21,7 +21,7 @@ Function prompt {
 
     else {
         $Color = "Green"
-        $Title = $env:COMPUTERNAME;
+        $Title = $($env:COMPUTERNAME);
         }
 
     Write-Host $promptText -NoNewLine -ForegroundColor $Color
