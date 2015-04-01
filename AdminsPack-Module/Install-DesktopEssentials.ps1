@@ -20,7 +20,6 @@
     }
 
      process {
-        choco install chocolatey -pre -force -Y
-        choco install 7zip ccleaner filezilla putty.install winscp googlechrome googleearth chocolateygui jre8 jdk8 sublimetext3 brackets sysinternals directx steam -pre -force -Y
+        choco install 7zip ccleaner putty.install winscp googlechrome googleearth chocolateygui jre8 jdk8 sublimetext3 brackets sysinternals directx steam -pre -Y
      }
 }
