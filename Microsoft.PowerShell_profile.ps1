@@ -27,7 +27,11 @@ Function prompt {
     Write-Host $promptText -NoNewLine -ForegroundColor $Color
     $Host.UI.RawUI.WindowTitle = $Title;
     Return " "
+<<<<<<< HEAD
 }
+=======
+  }
+>>>>>>> origin/master
 
 # ...my castle
 Set-Location -Path $HOME
