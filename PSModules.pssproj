@@ -40,8 +40,8 @@
     <Compile Include="humans.txt" />
     <Compile Include="Import-PSModules.ps1" />
     <Compile Include="LICENSE" />
-    <Compile Include="Microsoft.PowerShellISE_profile.ps1" />
-    <Compile Include="Microsoft.PowerShell_profile.ps1" />
+    <Compile Include="Microsoft.PowerShellISE_profile" />
+    <Compile Include="Microsoft.PowerShell_profile" />
     <Compile Include="PSModuleBlueprint\PSModuleBlueprint.psd1" />
     <Compile Include="PSModuleBlueprint\PSModuleBlueprint.psm1" />
     <Compile Include="README.md" />
