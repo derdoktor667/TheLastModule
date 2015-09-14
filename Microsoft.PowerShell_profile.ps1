@@ -29,6 +29,5 @@ Function prompt {
     Return " "
     }
 
-
-# ...my castle
+# ...my home is my castle
 Set-Location -Path $HOME
