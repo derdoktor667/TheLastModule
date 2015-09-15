@@ -9,7 +9,4 @@ if (!(Test-Path $PROFILE)) {
 
 # ...dot source the foo
 Get-ChildItem -Path $ScriptDir -Recurse | Unblock-File 
-Get-ChildItem -Path $ScriptDir -Recurse -Filter *.ps1 | foreach-Object {. $_.FullName}
-
-# ...all good
-Write-Output "All good. Use 'Get-Command -Module TheLastModule' for more informations."
+Get-ChildItem -Path $AdminTools -Recurse -Filter *.ps1 | foreach-Object {. $_.FullName}
