@@ -7,7 +7,19 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>MyApplication</RootNamespace>
     <AssemblyName>MyApplication</AssemblyName>
-    <Name>PSModules</Name>
+    <Name>TheLastModule</Name>
+    <ProjectHome />
+    <Author>Wastl Kraus</Author>
+    <CompanyName>Wir-sind-die-Matrix.de</CompanyName>
+    <Copyright>(c) 2015 Wastl Kraus. All rights reserved.</Copyright>
+    <Description />
+    <Version>0.2.1.11</Version>
+    <Guid>926B03ED-9A30-4D03-BFA5-C072D39EBED2</Guid>
+    <ClrVersion />
+    <PowerShellHostVersion />
+    <PowerShellVersion>v3</PowerShellVersion>
+    <ProcessorArchitecture />
+    <RequiredModules />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,28 +39,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdminsPack-Module\AdminsPack-Module.psd1" />
-    <Compile Include="AdminsPack-Module\AdminsPack-Module.psm1" />
-    <Compile Include="AdminsPack-Module\Backup-LocalCertStore.ps1" />
-    <Compile Include="AdminsPack-Module\Initialize-LdapSnooper.ps1" />
-    <Compile Include="AdminsPack-Module\Install-Chocolatey.ps1" />
-    <Compile Include="AdminsPack-Module\Install-DesktopEssentials.ps1" />
-    <Compile Include="AdminsPack-Module\Install-GVLKClient.ps1" />
-    <Compile Include="AdminsPack-Module\Protect-PowershellScript.ps1" />
-    <Compile Include="AdminsPack-Module\Start-AdminPowershell.ps1" />
-    <Compile Include="AdminsPack-Module\Sync-AD.ps1" />
+    <Compile Include="AdminTools\Backup-LocalCertStore.ps1" />
+    <Compile Include="AdminTools\Install-Chocolatey.ps1" />
+    <Compile Include="AdminTools\Install-DesktopEssentials.ps1" />
+    <Compile Include="AdminTools\Install-GVLKClient.ps1" />
+    <Compile Include="AdminTools\Install-ServerEssentials.ps1" />
+    <Compile Include="AdminTools\Protect-PowershellScript.ps1" />
+    <Compile Include="AdminTools\Start-AdminPowershell.ps1" />
     <Compile Include="humans.txt" />
-    <Compile Include="Import-PSModules.ps1" />
+    <Compile Include="TheLastModule.psm1" />
     <Compile Include="LICENSE" />
-    <Compile Include="Microsoft.PowerShellISE_profile" />
-    <Compile Include="Microsoft.PowerShell_profile" />
-    <Compile Include="PSModuleBlueprint\PSModuleBlueprint.psd1" />
-    <Compile Include="PSModuleBlueprint\PSModuleBlueprint.psm1" />
+    <Compile Include="ProfileOptimization\Microsoft.PowerShellISE_profile.txt" />
+    <Compile Include="ProfileOptimization\Microsoft.PowerShell_profile.txt" />
     <Compile Include="README.md" />
+    <Compile Include="TheLastModule.psd1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AdminsPack-Module\" />
-    <Folder Include="PSModuleBlueprint\" />
+    <Folder Include="AdminTools\" />
+    <Folder Include="ProfileOptimization\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

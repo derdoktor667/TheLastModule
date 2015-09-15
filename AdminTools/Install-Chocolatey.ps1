@@ -28,10 +28,10 @@
         $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
         if (!($isAdmin)) {
-            Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
+            Write-Error "...sorry, you have to install Chocolatey as an Administrator" -ErrorAction Stop
             # ...dead
         }
-    }
+    } # END begin
 
      process {
         Invoke-Expression ((New-Object -TypeName Net.Webclient).DownloadString('https://chocolatey.org/install.ps1'))

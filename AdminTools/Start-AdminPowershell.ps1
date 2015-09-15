@@ -33,10 +33,10 @@
         Set-StrictMode -Version Latest
         $Domain = "$env:USERDOMAIN"
         $AdminCredentials = "$Domain\Administrator"
-    }
+    } #END begin
 
     process {
         $AdminSession = New-PSSession -ComputerName $Computername -Credential $AdminCredentials -Verbose
         Enter-PSSession $AdminSession
-    }
+    } #END begin
 }

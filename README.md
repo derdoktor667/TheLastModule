@@ -1,15 +1,10 @@
 [PSModules](https://github.com/derdoktor667/PSModules/)
 =========================================================
 
-Just some little helpers and tools for the everyday work.
-
-It´s very strange working with Github Markdown, so this and the LICENSE.md are the only content readable for Github site generator [Jekyll][Jekyll].
-
-ONLY FOR DEVELOPMENT AND TESTING PURPOSE!!! DON´T USE FOR PRODUCTION!!!
-
-[Jekyll]: http://jekyllrb.com/
+Just some little helpers and tools for the daily work.
 
 ---------------------------------------------------------
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Wastl Kraus

@@ -11,7 +11,7 @@
         The GVLKey to use for activation.
 
     .PARAMETER KMSHost
-        The KMS Hoar to use for activation.
+        The KMS Server to use for activation.
 
     .EXAMPLE
         Install-GVLKClient -GVLKey "XXXX-XXXX-XXXX-XXXX-XXXX" -KMSHost kms.contoso.com:1688
@@ -47,15 +47,13 @@
             }
 
         # ...currently OS edition
-        $WinEditionOnline = $(Get-WindowsEdition -Online)
-        }
+        $WinEditionOnline = (Get-WindowsEdition -Online).Edition
+	}
 
     process {
-        if(!($WinEditionOnline.Edition -eq $WinEditionWanted)) {
+        if(!($WinEditionOnline -notlike $WinEditionWanted)) {
             dism /online /set-edition:$WinEditionWanted /productkey:$GVLKey /accepteula
-            slmgr.vbs /skms "$KMSHost"
-            slmgr.vbs /ato
-            slmgr.vbs /dli
+            slmgr.vbs /skms $KMSHost
         }
     }
 }

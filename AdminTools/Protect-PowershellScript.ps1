@@ -26,21 +26,22 @@
     [cmdletbinding()]
 
     param(
-        [parameter(ValueFromPipeLine=$True,ValueFromPipeLineByPropertyName=$True)][string]$ScriptPath = $(throw "-ScriptPath not given. Exit.")
-        )
+        [parameter(ValueFromPipeLine=$True,ValueFromPipeLineByPropertyName=$True,Mandatory=$True)][string]$ScriptPath
+	)
 
     begin {
         Set-StrictMode -Version Latest
-        $signcert = $(Get-ChildItem cert:\ -Recurse –Codesign)
-        $timeStampURL = "http://timestamp.verisign.com/scripts/timstamp.dll"
+        $SignCert = Get-ChildItem -Path cert:\ -Recurse –Codesign
+        $TimeStampURL = "http://timestamp.verisign.com/scripts/timstamp.dll"
 
         # check for the Certificate
-        if ($signcert -eq $null) {
+        if ($SignCert -eq $null) {
             $(throw "Could not find a suitable Certificate. Exit")
-            }
+		} # END begin
     }
 
     process {
-        Set-AuthenticodeSignature -FilePath $ScriptPath -Certificate $signcert -IncludeChain all -TimestampServer $timeStampURL
-    }
+        Set-AuthenticodeSignature -FilePath $ScriptPath -Certificate $SignCert -IncludeChain all -TimestampServer $TimeStampURL
+    } # END process
 }
+
