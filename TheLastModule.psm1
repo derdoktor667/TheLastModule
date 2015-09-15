@@ -1,6 +1,6 @@
 # ...are we lost???
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
-
+$AdminTools = Join-Path -Path $ScriptDir -ChildPath AdminTools
 # ...do you already have a $PROFILE???
 
 if (!(Test-Path $PROFILE)) {
@@ -18,7 +18,7 @@ if ($PimpProfile -like "Y") {
 
 # ...dot source the foo
 Get-ChildItem -Path $ScriptDir -Recurse| Unblock-File 
-Get-ChildItem -Path $ScriptDir\*.ps1 -Recurse | foreach-Object {. $_.FullName}
+Get-ChildItem -Path $AdminTools | foreach-Object {. $_.FullName}
 
 # ...all good
 Write-Output "All good. Use 'Get-Command -Module TheLastModule' for more informations."
