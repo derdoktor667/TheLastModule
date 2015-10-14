@@ -39,13 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdminTools\Backup-LocalCertStore.ps1" />
-    <Compile Include="AdminTools\Install-Chocolatey.ps1" />
-    <Compile Include="AdminTools\Install-DesktopEssentials.ps1" />
-    <Compile Include="AdminTools\Install-GVLKClient.ps1" />
-    <Compile Include="AdminTools\Install-ServerEssentials.ps1" />
-    <Compile Include="AdminTools\Protect-PowershellScript.ps1" />
-    <Compile Include="AdminTools\Start-AdminPowershell.ps1" />
+    <Compile Include="Scripts\Backup-LocalCertStore.ps1" />
+    <Compile Include="Scripts\Get-BingDailyImage.ps1" />
+    <Compile Include="Scripts\Install-Chocolatey.ps1" />
+    <Compile Include="Scripts\Install-DesktopEssentials.ps1" />
+    <Compile Include="Scripts\Install-GVLKClient.ps1" />
+    <Compile Include="Scripts\Install-ServerEssentials.ps1" />
+    <Compile Include="Scripts\Protect-PowershellScript.ps1" />
+    <Compile Include="Scripts\Start-AdminPowershell.ps1" />
     <Compile Include="humans.txt" />
     <Compile Include="TheLastModule.psm1" />
     <Compile Include="LICENSE" />
@@ -55,7 +56,7 @@
     <Compile Include="TheLastModule.psd1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AdminTools\" />
+    <Folder Include="Scripts\" />
     <Folder Include="ProfileOptimization\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
