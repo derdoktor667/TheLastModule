@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'TheLastModule.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.2.1.11'
@@ -63,10 +63,10 @@ CLRVersion = '4.0'
 # FormatsToProcess = ''
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-# NestedModules = ''
+NestedModules = 'TheLastModule.psm1'
 
 # Functions to export from this module
-FunctionsToExport = 'Backup-LocalCertStore', 'Install-Chocolatey', 'Install-DesktopEssentials', 'InstallGVLKClient', 'Install-ServerEssentials', 'Protect-PowershellScript', 'Start-AdminPowershell'
+FunctionsToExport = 'Backup-LocalCertStore', 'Install-Chocolatey', 'Install-DesktopEssentials', 'InstallGVLKClient', 'Install-ServerEssentials', 'Protect-PowershellScript', 'Start-AdminPowershell', 'Get-BingDailyImage'
 
 # Cmdlets to export from this module
 CmdletsToExport = '*'
