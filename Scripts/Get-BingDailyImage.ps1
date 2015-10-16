@@ -1,3 +1,5 @@
+function Get-BingDailyImage {
+
 <#
 
 .SYNOPSIS
@@ -25,9 +27,14 @@
     -----------
     Get today's Bing Wallpaper and downloads it to C:\temp\BingImages\BINGFILENAME.jpg
 
-#>
+.NOTES
+    Author: Wastl Kraus
+    Email : derdoktor667@gmail.com
 
-function Get-BingDailyImage {
+.LINK
+    http://wir-sind-die-matrix.de/
+
+#>
 
 # START FRESH
 
@@ -40,6 +47,7 @@ function Get-BingDailyImage {
 
 	# some prerequesites
 	begin {
+		Set-StrictMode -Version Latest
 		$env:TEMP = Join-Path -Path $HOME -ChildPath "AppData\Local\Temp"
 		[string]$BingUrl = "http://www.bing.com"
 		[string]$FeedURL = "/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=de-DE"
@@ -51,7 +59,7 @@ function Get-BingDailyImage {
 		$RequestBing = Invoke-WebRequest -Uri $RequestUrl
 		[Xml]$ResponseBing = $RequestBing.Content
 		$ImageBaseUrl = $ResponseBing.images.image
-		$DownloadUri = New-Object System.Uri "$($BingUrl)$($ImageBaseUrl.urlBase)_$($Resolution).jpg"
+		$DownloadUri = New-Object -TypeName System.Uri -Args "$($BingUrl)$($ImageBaseUrl.urlBase)_$($Resolution).jpg"
 		$ImageName = $DownloadUri.Segments[$DownloadUri.Segments.Count -1]
 		$DownloadedImageName = "$($ImageName.Split("_")[0])_$($ImageName.Split("_")[$ImageName.Split("_").Count -1])"
 		Invoke-WebRequest -Uri $DownloadUri -OutFile "$Path\$DownloadedImageName"

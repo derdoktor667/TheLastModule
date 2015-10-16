@@ -1,4 +1,4 @@
-﻿Function Protect-PowershellScript {
+﻿function Protect-PowershellScript {
 
     <#
     .SYNOPSIS
@@ -44,4 +44,5 @@
         Set-AuthenticodeSignature -FilePath $ScriptPath -Certificate $SignCert -IncludeChain all -TimestampServer $TimeStampURL
     } # END process
 }
+
 

@@ -1,4 +1,4 @@
-﻿Function Start-AdminPowershell {
+﻿function Start-AdminPowershell {
 
     <#
     .SYNOPSIS

@@ -1,4 +1,4 @@
-﻿Function Backup-LocalCertStore {
+﻿function Backup-LocalCertStore {
 
     <#
     .SYNOPSIS
@@ -54,3 +54,4 @@
         }
     } # END process
 }
+

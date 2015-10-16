@@ -2,8 +2,6 @@
 $a = $(Get-Host).PrivateData
 $a.ErrorBackgroundColor = "red"
 $a.ErrorForegroundColor = "white"
-# $a.ProgressForegroundColor = "blue"
-# $a.ProgressBackgroundColor = "white"
 
 # ...add some more colors
 Function prompt {
@@ -28,3 +26,4 @@ Function prompt {
 
 # ...my home is my castle
 Set-Location -Path $HOME
+

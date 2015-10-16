@@ -15,9 +15,10 @@
     <Description />
     <Version>0.2.1.11</Version>
     <Guid>926B03ED-9A30-4D03-BFA5-C072D39EBED2</Guid>
-    <ClrVersion />
+    <ClrVersion>v4.0</ClrVersion>
     <PowerShellHostVersion />
-    <PowerShellVersion>v3</PowerShellVersion>
+    <PowerShellVersion>
+    </PowerShellVersion>
     <ProcessorArchitecture />
     <RequiredModules />
   </PropertyGroup>
@@ -50,8 +51,8 @@
     <Compile Include="humans.txt" />
     <Compile Include="TheLastModule.psm1" />
     <Compile Include="LICENSE" />
-    <Compile Include="ProfileOptimization\Microsoft.PowerShellISE_profile.txt" />
-    <Compile Include="ProfileOptimization\Microsoft.PowerShell_profile.txt" />
+    <Compile Include="ProfileOptimization\Microsoft.PowerShellISE_profile.ps1" />
+    <Compile Include="ProfileOptimization\Microsoft.PowerShell_profile.ps1" />
     <Compile Include="README.md" />
     <Compile Include="TheLastModule.psd1" />
   </ItemGroup>

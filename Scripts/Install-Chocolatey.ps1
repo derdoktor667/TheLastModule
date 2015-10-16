@@ -1,4 +1,4 @@
-﻿Function Install-Chocolatey {
+﻿function Install-Chocolatey {
 
     <#
     .SYNOPSIS
@@ -37,3 +37,4 @@
         Invoke-Expression ((New-Object -TypeName Net.Webclient).DownloadString('https://chocolatey.org/install.ps1'))
      }
 }
+

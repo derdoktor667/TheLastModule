@@ -6,7 +6,7 @@ $a.ProgressForegroundColor = "blue"
 $a.ProgressBackgroundColor = "white"
 
 # ...add some more colors
-Function prompt {
+function prompt {
     $promptText = "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
     $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)

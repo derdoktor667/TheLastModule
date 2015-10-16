@@ -46,3 +46,4 @@ function Install-ServerEssentials {
 		Start-Process powershell.exe -ArgumentList "-command choco install $Apps4Server -pre -Y"
 	} # END process
 }
+

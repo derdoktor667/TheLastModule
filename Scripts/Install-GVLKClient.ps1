@@ -1,4 +1,4 @@
-﻿Function Install-GVLKClient {
+﻿function Install-GVLKClient {
 
 <#
     .SYNOPSIS
@@ -57,3 +57,4 @@
         }
     }
 }
+
