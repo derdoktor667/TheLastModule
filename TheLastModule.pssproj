@@ -13,9 +13,10 @@
     <CompanyName>Wir-sind-die-Matrix.de</CompanyName>
     <Copyright>(c) 2015 Wastl Kraus. All rights reserved.</Copyright>
     <Description />
-    <Version>0.2.1.11</Version>
+    <Version>0.3.0.0.0</Version>
     <Guid>926B03ED-9A30-4D03-BFA5-C072D39EBED2</Guid>
-    <ClrVersion>v4.0</ClrVersion>
+    <ClrVersion>
+    </ClrVersion>
     <PowerShellHostVersion />
     <PowerShellVersion>
     </PowerShellVersion>
