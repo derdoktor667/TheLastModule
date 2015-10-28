@@ -13,7 +13,7 @@
 	Web: http://www.ps3mediaserver.org
 
 /* SITE */
-	Last update:2014/07/05
+	Last update:2015/10/28
 	Language: Deutsch / English 
-	Doctype:HTML5
-	IDE: Brackets, Sublime Text 3 -beta-, Chrome, FilleZilla
+	Doctype:
+	IDE: VS-Code, VisualStudio2015 Community

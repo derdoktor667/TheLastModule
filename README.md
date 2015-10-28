@@ -1,7 +1,12 @@
-[PSModules](https://github.com/derdoktor667/PSModules/)
+[TheLastModule](https://github.com/derdoktor667/TheLastModule)
 =========================================================
 
-Just some little helpers and tools for the daily work.
+An experiment to supercharge some PowerShell Functions
+for any situation the Windows Admin will run into.
+
+Do not use until it's done!!!
+
+But you will miss the havok if you don't.
 
 ---------------------------------------------------------
 
