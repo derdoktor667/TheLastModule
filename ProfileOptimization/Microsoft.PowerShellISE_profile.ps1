@@ -1,15 +1,15 @@
 ﻿# ...pimp my Error
 $a = $(Get-Host).PrivateData
-$a.ErrorBackgroundColor = "red"
-$a.ErrorForegroundColor = "white"
+$a.ErrorBackgroundColor = "Red"
+$a.ErrorForegroundColor = "White"
 
 # ...add some more colors
-Function prompt {
-    $promptText = "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
-    $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+Function Prompt {
+    $PromptText = "PS $($ExecutionContext.SessionState.Path.CurrentLocation)$('>' * ($NestedPromptLevel + 1)) ";
+    $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
+    $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
-    if ($isAdmin -eq $true ) {
+    if ($IsAdmin -eq $true ) {
         $Color = "Red"
         $Title = "### ADMIN MODE: activated ### on " + $env:COMPUTERNAME;
         }
@@ -19,7 +19,7 @@ Function prompt {
         $Title = "$env:COMPUTERNAME";
         }
 
-    Write-Host $promptText -NoNewLine -ForegroundColor $Color
+    Write-Host $PromptText -NoNewLine -ForegroundColor $Color
     $Host.UI.RawUI.WindowTitle = $Title;
     Return " "
     }

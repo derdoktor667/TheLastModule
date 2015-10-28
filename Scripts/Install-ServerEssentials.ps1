@@ -1,13 +1,13 @@
-function Install-ServerEssentials {
+Function Install-ServerEssentials {
 
 	begin {
 		Set-StrictMode -Version Latest
 	
 		# do we have admin privileges???
-		$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
-		$isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+		$CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
+		$IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
-		if (!($isAdmin)) {
+		if (!($IsAdmin)) {
 			Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
 			# ...dead
 		}

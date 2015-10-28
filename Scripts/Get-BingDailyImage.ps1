@@ -1,4 +1,4 @@
-function Get-BingDailyImage {
+Function Get-BingDailyImage {
 	
 	<#
 	.SYNOPSIS
@@ -32,7 +32,6 @@ function Get-BingDailyImage {
 
 	.LINK
     	http://wir-sind-die-matrix.de/
-
 	#>
 
 # START FRESH

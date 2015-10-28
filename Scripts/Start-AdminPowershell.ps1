@@ -1,4 +1,4 @@
-﻿function Start-AdminPowershell {
+﻿Function Start-AdminPowershell {
 
     <#
     .SYNOPSIS
@@ -38,6 +38,6 @@
 
     process {
         $AdminSession = New-PSSession -ComputerName $Computername -Credential $AdminCredentials
-        Enter-PSSession $AdminSession
+        Enter-PSSession -Name $AdminSession
     } #END begin
 }

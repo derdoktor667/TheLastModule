@@ -1,4 +1,4 @@
-﻿function Protect-PowershellScript {
+﻿Function Protect-PowershellScript {
 
     <#
     .SYNOPSIS
@@ -31,6 +31,7 @@
 
     begin {
         Set-StrictMode -Version Latest
+
         $SignCert = Get-ChildItem -Path cert:\ -Recurse –Codesign
         $TimeStampURL = "http://timestamp.verisign.com/scripts/timstamp.dll"
 
