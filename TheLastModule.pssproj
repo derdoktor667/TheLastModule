@@ -12,8 +12,9 @@
     <Author>Wastl Kraus</Author>
     <CompanyName>Wir-sind-die-Matrix.de</CompanyName>
     <Copyright>(c) 2015 Wastl Kraus. All rights reserved.</Copyright>
-    <Description />
-    <Version>0.3.0.0.0</Version>
+    <Description>Will be the last module you need to install. in a distant future ^^
+</Description>
+    <Version>0.3.0.1</Version>
     <Guid>926B03ED-9A30-4D03-BFA5-C072D39EBED2</Guid>
     <ClrVersion>
     </ClrVersion>
@@ -22,6 +23,12 @@
     </PowerShellVersion>
     <ProcessorArchitecture />
     <RequiredModules />
+    <FormatsToProcess />
+    <FunctionsToProcess />
+    <ModuleList />
+    <ModuleToProcess />
+    <NestedModules />
+    <TypesToProcess />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Scripts\Backup-GPwmiFlter.ps1" />
     <Compile Include="Scripts\Backup-LocalCertStore.ps1" />
     <Compile Include="Scripts\Get-BingDailyImage.ps1" />
     <Compile Include="Scripts\Install-Chocolatey.ps1" />

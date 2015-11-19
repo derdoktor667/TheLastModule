@@ -1,3 +1,4 @@
 # ...dot source the foo
-Get-ChildItem -Path $PSScriptRoot -Recurse | Unblock-File 
-Get-ChildItem -Path $PSScriptRoot -Recurse -Filter *.ps1 | ForEach-Object {. $_.FullName}
+$ScriptsDir = Join-Path -Path $PSScriptRoot -ChildPath Scripts
+Get-ChildItem -Path $PSScriptRoot -Recurse | Unblock-File -Confirm: $false
+Get-ChildItem -Path $ScriptsDir -Recurse -Filter *.ps1 | ForEach-Object {. $_.FullName}

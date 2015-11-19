@@ -4,7 +4,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.0.0'
+ModuleVersion = '0.3.0.1'
 
 # ID used to uniquely identify this module
 GUID = '926B03ED-9A30-4D03-BFA5-C072D39EBED2'
@@ -34,7 +34,7 @@ PowerShellVersion = '3.0'
 DotNetFrameworkVersion = '3.5'
 
 # Minimum version of the common language runtime (CLR) required by this module
-CLRVersion = '3.0'
+CLRVersion = '4.0'
 
 # Processor architecture (None, X86, Amd64) required by this module
 ProcessorArchitecture = 'None'
@@ -55,19 +55,21 @@ ProcessorArchitecture = 'None'
 # FormatsToProcess = ''
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @()
+NestedModules = 'TheLastModule'
 
 # Functions to export from this module
-FunctionsToExport = '*'
+FunctionsToExport = 'Backup-GPwmiFilter', 'Backup-LocalCertStore', 'Get-BingDailyImage',
+					'Install-Chocolatey', 'Install-DesktopEssentials', 'Install-GVLKClient',
+					'Install-ServerEssentials', 'Protect-PowerShellScripts', 'Start-AdminPowerShell'
 
 # Cmdlets to export from this module
-CmdletsToExport = '*'
+# CmdletsToExport = ''
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = ''
 
 # Aliases to export from this module
-AliasesToExport = '*'
+# AliasesToExport = ''
 
 # List of all modules packaged with this module
 # ModuleList = @()
