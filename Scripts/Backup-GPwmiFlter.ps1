@@ -11,7 +11,7 @@ Function Backup-GPwmiFilter {
         Specifies the csv File export path.
 
     .EXAMPLE
-        Backup-GPwmiFilters -Path "c:\temp"
+        Backup-GPwmiFilter -Path "c:\temp"
 
         Exports all WMI Filters into "C:\temp\GPwmiFilters-CurrentDate.csv
 

@@ -60,7 +60,8 @@ NestedModules = 'TheLastModule'
 # Functions to export from this module
 FunctionsToExport = 'Backup-GPwmiFilter', 'Backup-LocalCertStore', 'Get-BingDailyImage',
 					'Install-Chocolatey', 'Install-DesktopEssentials', 'Install-GVLKClient',
-					'Install-ServerEssentials', 'Protect-PowerShellScripts', 'Start-AdminPowerShell'
+					'Install-ServerEssentials', 'Protect-PowerShellScripts', 'Start-AdminPowerShell',
+					'Update-ADMXCentralStore'
 
 # Cmdlets to export from this module
 # CmdletsToExport = ''
