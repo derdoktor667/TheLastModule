@@ -1,6 +1,4 @@
-Function Backup-GPwmiFilter {
-
-    <#
+<#
     .SYNOPSIS
         Backup the Group Policy WMI-Filters into csv-File.
 
@@ -21,8 +19,10 @@ Function Backup-GPwmiFilter {
 
     .LINK
         http://wir-sind-die-matrix.de/
-    #>
-	
+#>
+
+Function Backup-GPwmiFilter {
+    	
     [cmdletbinding()]
 
     Param (

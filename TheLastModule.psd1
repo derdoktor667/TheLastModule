@@ -31,7 +31,7 @@ PowerShellVersion = '3.0'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module
-DotNetFrameworkVersion = '3.5'
+# DotNetFrameworkVersion = '3.5'
 
 # Minimum version of the common language runtime (CLR) required by this module
 CLRVersion = '4.0'
@@ -55,19 +55,26 @@ ProcessorArchitecture = 'None'
 # FormatsToProcess = ''
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = 'TheLastModule'
+NestedModules = 'TheLastModule.psm1'
 
 # Functions to export from this module
-FunctionsToExport = 'Backup-GPwmiFilter', 'Backup-LocalCertStore', 'Get-BingDailyImage',
-					'Install-Chocolatey', 'Install-DesktopEssentials', 'Install-GVLKClient',
-					'Install-ServerEssentials', 'Protect-PowerShellScripts', 'Start-AdminPowerShell',
-					'Update-ADMXCentralStore'
+FunctionsToExport = 
+	'Backup-GPwmiFilter',
+	'Backup-LocalCertStore',
+	'Get-BingDailyImage',
+	'Install-Chocolatey',
+	'Install-DesktopEssentials',
+	'Install-GVLKClient',
+	'Install-ServerEssentials',
+	'Protect-PowerShellScripts',
+	'Start-AdminPowerShell',
+	'Update-ADMXCentralStore'
 
 # Cmdlets to export from this module
 # CmdletsToExport = ''
 
 # Variables to export from this module
-# VariablesToExport = ''
+VariablesToExport = '$moduleRoot'
 
 # Aliases to export from this module
 # AliasesToExport = ''

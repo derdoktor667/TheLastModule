@@ -1,7 +1,4 @@
-function Update-ADMXCentralStore {
-        
-    <#
-
+<#
     .SYNOPSIS
         Copy the local Policy Definitions to domains central store.
 
@@ -29,9 +26,10 @@ function Update-ADMXCentralStore {
 
     .LINK
         http://wir-sind-die-matrix.de/
+#>
 
-    #>
-	
+function Update-ADMXCentralStore {
+    	
     [cmdletbinding()]
 
     Param (
@@ -43,7 +41,7 @@ function Update-ADMXCentralStore {
 	$IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
     if (!($IsAdmin)) {
-            Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
+            Write-Error "...sorry, you donï¿½t have enough rights to run the script" -ErrorAction Stop
             # ...dead
 	}
 
@@ -64,7 +62,7 @@ function Update-ADMXCentralStore {
 		# ...dead
     }
 
-	# let´s see what we have got
+	# letï¿½s see what we have got
 	$ADMX2Copy = (Get-ChildItem -Path $LocalPoliciesPath -Recurse -Filter *.admx).FullName
 	$UICulturesLocal = (Get-ChildItem -Path $LocalPoliciesPath -Recurse).FullName
 
