@@ -68,7 +68,7 @@ FunctionsToExport =
 	'Install-ServerEssentials',
 	'Protect-PowerShellScripts',
 	'Start-AdminPowerShell',
-	'Update-ADMXCentralStore'
+	'Push-ADMXCentralStore'
 
 # Cmdlets to export from this module
 # CmdletsToExport = ''

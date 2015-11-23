@@ -10,12 +10,12 @@
         Specifies the csv File export path.
 
     .EXAMPLE
-        Update-ADMXCentralStore
+        Push-ADMXCentralStore
 
         This command uses your local UI Language for creating your pool.
 
 	.EXAMPLE
-		Update-ADMXCentralStore -UICulture en-US,de-DE
+		Push-ADMXCentralStore -UICulture en-US,de-DE
 
 		This example will update your central store with the policy
 		definition languages for English (US) and German.
@@ -28,7 +28,7 @@
         http://wir-sind-die-matrix.de/
 #>
 
-function Update-ADMXCentralStore {
+function Push-ADMXCentralStore {
     	
     [cmdletbinding()]
 
@@ -41,7 +41,7 @@ function Update-ADMXCentralStore {
 	$IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
     if (!($IsAdmin)) {
-            Write-Error "...sorry, you don�t have enough rights to run the script" -ErrorAction Stop
+            Write-Error "...sorry, you must be in local admins group to run the script" -ErrorAction Stop
             # ...dead
 	}
 
@@ -52,7 +52,7 @@ function Update-ADMXCentralStore {
 	$PolicyDefinitionPath = Join-Path -Path "$SysvolPath\$PoliciesPath" -ChildPath PolicyDefinitions
 	$LocalPoliciesPath = Join-Path -Path $env:windir -ChildPath PolicyDefinitions
 
-	if ($Domain -eq $null) {
+	if (!($Domain)) {
 		Write-Error "Local domain could not be resolved. Exit" -ErrorAction Stop
 		# ...dead
 	}
@@ -62,7 +62,7 @@ function Update-ADMXCentralStore {
 		# ...dead
     }
 
-	# let�s see what we have got
+	# see what we have got
 	$ADMX2Copy = (Get-ChildItem -Path $LocalPoliciesPath -Recurse -Filter *.admx).FullName
 	$UICulturesLocal = (Get-ChildItem -Path $LocalPoliciesPath -Recurse).FullName
 
@@ -77,10 +77,10 @@ function Update-ADMXCentralStore {
 	}
 
     foreach ($UI2Copy in $UICulture) {
-        New-Item -Path "$PolicyDefinitionPath\$UI2Copy" -ItemType Directory -Force
+        New-Item -Path "$PolicyDefinitionPath\$UI2Copy" -ItemType Directory -Force        
         $Dir2Copy = (Get-ChildItem -Path $UICulturesLocal -Recurse -Filter *.adml).FullName
 
-            if ($Dir2Copy -eq $null) {
+            if (!($Dir2Copy)) {
                 Write-Error "Selected UICulture $Dir2Copy not found. Exit" -ErrorAction Stop
             }
 
