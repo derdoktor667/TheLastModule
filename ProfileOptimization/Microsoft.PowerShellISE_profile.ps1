@@ -4,7 +4,7 @@ $a.ErrorBackgroundColor = "Red"
 $a.ErrorForegroundColor = "White"
 
 # ...add some more colors
-Function Prompt {
+Function prompt {
     $PromptText = "PS $($ExecutionContext.SessionState.Path.CurrentLocation)$('>' * ($NestedPromptLevel + 1)) ";
     $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
     $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)

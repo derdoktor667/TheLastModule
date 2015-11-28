@@ -56,9 +56,9 @@
     <Compile Include="Scripts\Install-GVLKClient.ps1" />
     <Compile Include="Scripts\Install-ServerEssentials.ps1" />
     <Compile Include="Scripts\Protect-PowershellScript.ps1" />
+    <Compile Include="Scripts\Push-ADMXCentralStore.ps1" />
     <Compile Include="Scripts\Start-AdminPowershell.ps1" />
     <Compile Include="humans.txt" />
-    <Compile Include="Scripts\Update-ADMXCentralStore.ps1" />
     <Compile Include="TheLastModule.psm1" />
     <Compile Include="LICENSE" />
     <Compile Include="ProfileOptimization\Microsoft.PowerShellISE_profile.ps1" />

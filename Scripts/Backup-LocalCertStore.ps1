@@ -32,7 +32,7 @@
     begin {
         Set-StrictMode -Version Latest
         [String]$CertBackupLocation = "$Path\CertBackup_$env:COMPUTERNAME"
-        $AllCerts = $(Get-ChildItem Cert:\\ -Recurse | where PSIsContainer -eq $false)
+        $AllCerts = $(Get-ChildItem Cert:\\ -Recurse | Where-Object PSIsContainer -eq $false)
     } # END begin
 
     process {
@@ -41,7 +41,7 @@
         }
 
         foreach ($Cert In $AllCerts) {
-            [String]$StoreLocation = $($Cert.PSParentPath -Split '::')[-1]
+            [String]$StoreLocation = $($Cert.PSParentPath -Split "::")[-1]
 
             if (!(Test-Path (Join-Path -Path $CertBackupLocation -ChildPath $StoreLocation))) {
                 New-Item (Join-Path $CertBackupLocation $StoreLocation) -ItemType Directory
