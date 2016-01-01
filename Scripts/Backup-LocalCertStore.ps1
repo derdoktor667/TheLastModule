@@ -1,6 +1,5 @@
-﻿Function Backup-LocalCertStore {
+﻿<#
 
-    <#
     .SYNOPSIS
         Backup the local Certificates to given path.
 
@@ -21,37 +20,36 @@
 
     .LINK
         http://wir-sind-die-matrix.de/
-    #>
 
+#>
+
+function Backup-LocalCertStore {
+    
     [cmdletbinding()]
 
     param(
         [parameter(ValueFromPipeLine=$True,ValueFromPipeLineByPropertyName=$True)][string]$Path = $env:temp
         )
 
-    begin {
-        Set-StrictMode -Version Latest
-        [String]$CertBackupLocation = "$Path\CertBackup_$env:COMPUTERNAME"
-        $AllCerts = $(Get-ChildItem Cert:\\ -Recurse | Where-Object PSIsContainer -eq $false)
-    } # END begin
+    Set-StrictMode -Version Latest
+    
+    [String]$CertBackupLocation = "$Path\CertBackup_$env:COMPUTERNAME"
+    $AllCerts = Get-ChildItem Cert:\\ -Recurse | Where-Object PSIsContainer -eq $false
 
-    process {
-        if (!(Test-Path $CertBackupLocation)) {
-            New-Item -Path $CertBackupLocation -ItemType Directory
+    if (!(Test-Path $CertBackupLocation)) {
+        New-Item -Path $CertBackupLocation -ItemType Directory
+    }
+
+    foreach ($Cert In $AllCerts) {
+        [String]$StoreLocation = $($Cert.PSParentPath -Split "::")[-1]
+
+        if (!(Test-Path (Join-Path -Path $CertBackupLocation -ChildPath $StoreLocation))) {
+            New-Item (Join-Path $CertBackupLocation $StoreLocation) -ItemType Directory
         }
 
-        foreach ($Cert In $AllCerts) {
-            [String]$StoreLocation = $($Cert.PSParentPath -Split "::")[-1]
-
-            if (!(Test-Path (Join-Path -Path $CertBackupLocation -ChildPath $StoreLocation))) {
-                New-Item (Join-Path $CertBackupLocation $StoreLocation) -ItemType Directory
-            }
-
-            if (!($Cert.HasPrivateKey -And -Not $Cert.Archived)) {
-                $Filepath = [String](Join-Path (Join-Path -Path $CertBackupLocation -ChildPath $StoreLocation) $Cert.Thumbprint) + '.crt'
-                Export-Certificate -Cert $Cert -FilePath $Filepath -Force
-            }
+        if (!($Cert.HasPrivateKey -And -Not $Cert.Archived)) {
+            $Filepath = [String](Join-Path (Join-Path -Path $CertBackupLocation -ChildPath $StoreLocation) $Cert.Thumbprint) + '.crt'
+            Export-Certificate -Cert $Cert -FilePath $Filepath -Force -Verbose
         }
-    } # END process
+    }
 }
-

@@ -28,7 +28,10 @@ function Write-Log {
     (
 		[int]$LogLevel,
 		[string]$LogMessage,
-		[string]$LogFile = "$env:TEMP\TheLastModuleLogFile.txt")
+		[string]$LogFile = "$env:TEMP\TheLastModuleLogFile.txt"
+        )
+    
+   	Set-StrictMode -Version Latest
 
 	Switch ($LogLevel){
 		0 {$Color = "Green"}

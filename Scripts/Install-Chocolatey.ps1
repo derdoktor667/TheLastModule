@@ -1,6 +1,4 @@
-﻿Function Install-Chocolatey {
-
-    <#
+﻿ <#
     .SYNOPSIS
         Everybody likes Chocolatey.
 
@@ -18,23 +16,22 @@
 
     .LINK
         http://wir-sind-die-matrix.de/
-    #>
+#>
 
-    begin {
-        Set-StrictMode -Version Latest
+function Install-Chocolatey {
 
-        # do we have admin privileges???
-        $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
-        $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    Set-StrictMode -Version Latest
 
-        if (!($IsAdmin)) {
-            Write-Error "...sorry, you have to install Chocolatey as an Administrator" -ErrorAction Stop
-            # ...dead
-        }
-    } # END begin
+    # do we have admin privileges???
+    $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
+    $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
-     process {
-        Invoke-Expression ((New-Object -TypeName Net.Webclient).DownloadString('https://chocolatey.org/install.ps1'))
-    } # END process
+    if (!($IsAdmin)) {
+        Write-Error "...sorry, you have to install Chocolatey as an Administrator" -ErrorAction Stop
+        # ...dead
+    }
+
+    Invoke-Expression ((New-Object -TypeName Net.Webclient).DownloadString('https://chocolatey.org/install.ps1'))
+    
 }
 

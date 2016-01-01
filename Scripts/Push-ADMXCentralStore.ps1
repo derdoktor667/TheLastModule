@@ -36,6 +36,8 @@ function Push-ADMXCentralStore {
 	$UICulture = @((Get-UICulture).Name)
     )
 
+	Set-StrictMode -Version Latest
+    
 	# We need to be in admins group for this
 	$CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
 	$IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)

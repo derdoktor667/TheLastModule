@@ -1,6 +1,4 @@
-﻿Function Install-GVLKClient {
-
-<#
+﻿<#
     .SYNOPSIS
         Deploy GVLK Key and setup the KMS Server connection.
 
@@ -24,37 +22,34 @@
 
     .LINK
         http://wir-sind-die-matrix.de/
-    #>
+#>
+
+function Install-GVLKClient {
 
     [cmdletbinding()]
 
     param(
-        [parameter(mandatory=$true)]$GVLKey = " ",
-        [parameter(mandatory=$true)]$KMSHost = " ",
-        [parameter(mandatory=$true)]$WinEditionWanted = " ",
+        [parameter(mandatory=$true)]$GVLKey,
+        [parameter(mandatory=$true)]$KMSHost,
+        [parameter(mandatory=$true)]$WinEditionWanted,
         [parameter(mandatory=$false)]$Computername = $env:COMPUTERNAME
         )
 
-    begin {
-        Set-StrictMode -Version Latest
+    Set-StrictMode -Version Latest
 
-        # do we have admin privileges???
-        $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
-        $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-        if (!($IsAdmin)) {
-            Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
-            # ...dead
-            }
+    # do we have admin privileges???
+    $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
+    $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    
+    if (!($IsAdmin)) {
+        Write-Error "...sorry, you don´t have enough rights to run the script" -ErrorAction Stop
+        # ...dead
+    }
 
-        # ...currently OS edition
-        $WinEditionOnline = (Get-WindowsEdition -Online).Edition
-	}
+    # ...currently OS edition
+    $WinEditionOnline = (Get-WindowsEdition -Online).Edition
 
-    process {
-        if(!($WinEditionOnline -notlike $WinEditionWanted)) {
-            dism /online /set-edition:$WinEditionWanted /productkey:$GVLKey /accepteula
-            slmgr.vbs /skms $KMSHost
-        }
+    if(!($WinEditionOnline -notlike $WinEditionWanted)) {
+        dism /online /set-edition:$WinEditionWanted /productkey:$GVLKey /accepteula
     }
 }
-
