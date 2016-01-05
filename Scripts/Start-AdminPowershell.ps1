@@ -35,6 +35,6 @@ function Start-AdminPowershell {
     $AdminCredentials = Get-Credential -Credential "$Domain\Administrator"
 
     $AdminSession = New-PSSession -ComputerName $Computername -Credential $AdminCredentials
-    Enter-PSSession -Name $AdminSession
+    Enter-PSSession $AdminSession
 
-    }
+}
