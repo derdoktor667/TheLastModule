@@ -5,26 +5,27 @@ $a.ErrorForegroundColor = "White"
 $a.ProgressForegroundColor = "Blue"
 $a.ProgressBackgroundColor = "White"
 
-# ...my home is my castle
-Set-Location -Path $HOME
-
-# testing
-$Localtion = (Get-Location -PSProvider FileSystem).ProviderPath
-$PromptText = "PS $Localtion"
+# ...are we in Admins Group?
 $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
 $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
-# ...add some more colors
+# ...paint the prompt
 function prompt {
     
+    $Localtion = (Get-Location -PSProvider FileSystem).ProviderPath
+    $PromptText = "PS $Localtion"
+    
+    # ...users will get a green prompt
     $Color = "Green"
     $Title = "$env:COMPUTERNAME"
     
+    # ...admins prompt will be red
     if ($IsAdmin -eq $true ) {
         $Color = "Red"
         $Title = "### ADMIN MODE: activated ### on " + $env:COMPUTERNAME
         }
-
+    
+    # ...now decorade the shell    
     Write-Host $PromptText -NoNewLine -ForegroundColor $Color
     $Host.UI.RawUI.WindowTitle = $Title
     Return " > "
