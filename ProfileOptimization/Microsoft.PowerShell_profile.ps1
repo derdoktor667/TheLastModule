@@ -39,3 +39,14 @@ $PSDefaultParameterValues = @{
     "New-ModuleManifest:AliasesToExport" = "*"
     "New-ModuleManifest:VariablesToExport" = "*"
     }
+
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
+# ...use git provided by "Github App"
+if (Test-Path -Path "$env:LOCALAPPDATA\GitHub\shell.ps1") {
+    . (Resolve-Path "$env:LOCALAPPDATA\GitHub\shell.ps1")
+}

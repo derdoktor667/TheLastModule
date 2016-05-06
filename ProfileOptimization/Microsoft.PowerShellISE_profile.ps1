@@ -6,14 +6,14 @@ $a = (Get-Host).PrivateData
 $a.ErrorBackgroundColor = "Red"
 $a.ErrorForegroundColor = "White"
 
+# ...add some more colors
 $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
 $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
-# ...add some more colors
 function prompt {
-
-    $Location = (Get-Location -PSProvider FileSystem).ProviderPath
-    $PromptText = "PS $Location"
+    
+    $Localtion = (Get-Location -PSProvider FileSystem).ProviderPath
+    $PromptText = "PS $Localtion"
     
     $Color = "Green"
     $Title = "$env:COMPUTERNAME"
@@ -24,6 +24,7 @@ function prompt {
         }
 
     Write-Host $PromptText -NoNewLine -ForegroundColor $Color
+    $Host.UI.RawUI.WindowTitle = $Title
     Return " > "
 }
 
@@ -37,12 +38,13 @@ $PSDefaultParameterValues = @{
     "New-ModuleManifest:VariablesToExport" = "*"
     }
 
-#Script Browser Begin
-#Version: 1.3.2
-Add-Type -Path 'C:\Program Files (x86)\Microsoft Corporation\Microsoft Script Browser\System.Windows.Interactivity.dll'
-Add-Type -Path 'C:\Program Files (x86)\Microsoft Corporation\Microsoft Script Browser\ScriptBrowser.dll'
-Add-Type -Path 'C:\Program Files (x86)\Microsoft Corporation\Microsoft Script Browser\BestPractices.dll'
-$scriptBrowser = $psISE.CurrentPowerShellTab.VerticalAddOnTools.Add('Script Browser', [ScriptExplorer.Views.MainView], $true)
-$scriptAnalyzer = $psISE.CurrentPowerShellTab.VerticalAddOnTools.Add('Script Analyzer', [BestPractices.Views.BestPracticesView], $true)
-$psISE.CurrentPowerShellTab.VisibleVerticalAddOnTools.SelectedAddOnTool = $scriptBrowser
-#Script Browser End
+# Chocolatey profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
+# ...use git provided by "Github App"
+if (Test-Path -Path "$env:LOCALAPPDATA\GitHub\shell.ps1") {
+    . (Resolve-Path "$env:LOCALAPPDATA\GitHub\shell.ps1")
+}
