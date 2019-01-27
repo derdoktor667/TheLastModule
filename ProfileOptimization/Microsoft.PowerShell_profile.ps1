@@ -11,10 +11,11 @@ $a.ProgressBackgroundColor = "White"
 # ...add some more colors
 $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent([Security.Principal.TokenAccessLevels]'Query,Duplicate'))
 $IsAdmin = $CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+$Localtion = (Get-Location -PSProvider FileSystem).ProviderPath
 
 function prompt {
     
-    $Localtion = (Get-Location -PSProvider FileSystem).ProviderPath
+    
     $PromptText = "PS $Localtion"
     
     $Color = "Green"
@@ -39,12 +40,6 @@ $PSDefaultParameterValues = @{
     "New-ModuleManifest:AliasesToExport" = "*"
     "New-ModuleManifest:VariablesToExport" = "*"
     }
-
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
 
 # ...use git provided by "Github App"
 if (Test-Path -Path "$env:LOCALAPPDATA\GitHub\shell.ps1") {
